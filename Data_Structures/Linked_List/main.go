@@ -24,8 +24,27 @@ func (ls *LinkedList) Empty() bool {
 }
 
 func (ls *LinkedList) pushFront(value int) {
-	newNode := &Node{value: value}
+	// newNode := &Node{value: value}
 
+	// if ls.head == nil {
+	// 	ls.head = newNode
+	// 	ls.elementCount++
+	// 	return
+	// }
+
+	// current := ls.head
+	// for current.next != nil {
+	// 	current = current.next
+	// }
+
+	// current.next = newNode
+	// ls.elementCount++
+
+	//===============================
+    //===============================
+	// Stack variant
+	newNode := &Node{value: value}
+	
 	if ls.head == nil {
 		ls.head = newNode
 		ls.elementCount++
@@ -33,11 +52,8 @@ func (ls *LinkedList) pushFront(value int) {
 	}
 
 	current := ls.head
-	for current.next != nil {
-		current = current.next
-	}
-
-	current.next = newNode
+	ls.head = newNode
+	newNode.next = current
 	ls.elementCount++
 }
 
